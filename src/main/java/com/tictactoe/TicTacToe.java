@@ -1,22 +1,28 @@
 package com.tictactoe;
 
-import java.util.Scanner;
-
 public class TicTacToe {
 
-    // Method to get user input
-    public static int getUserSlot() {
-        Scanner scanner = new Scanner(System.in);
+    // Utility method to convert slot to row & column
+    public static int[] convertSlotToIndex(int slot) {
 
-        System.out.print("Enter a slot number (1-9): ");
-        int slot = scanner.nextInt();  // Read integer input
+        // Convert to zero-based index
+        int index = slot - 1;
 
-        return slot; // Return slot value to game logic
+        // Calculate row and column
+        int row = index / 3;
+        int col = index % 3;
+
+        return new int[]{row, col};
     }
 
     public static void main(String[] args) {
-        int userSlot = getUserSlot();  // Call method
 
-        System.out.println("You selected slot: " + userSlot);
+        int slot = 5; // Example input
+
+        int[] position = convertSlotToIndex(slot);
+
+        System.out.println("Slot: " + slot);
+        System.out.println("Row: " + position[0]);
+        System.out.println("Column: " + position[1]);
     }
 }
