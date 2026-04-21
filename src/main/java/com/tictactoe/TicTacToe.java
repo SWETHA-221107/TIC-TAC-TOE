@@ -1,41 +1,22 @@
 package com.tictactoe;
 
-import java.util.Random;
+import java.util.Scanner;
 
 public class TicTacToe {
 
-    // Game state variables
-    static String currentPlayer;
-    static char player1Symbol;
-    static char player2Symbol;
+    // Method to get user input
+    public static int getUserSlot() {
+        Scanner scanner = new Scanner(System.in);
 
-    // Function to perform toss and assign symbols
-    public static void tossAndAssign() {
-        Random random = new Random();
+        System.out.print("Enter a slot number (1-9): ");
+        int slot = scanner.nextInt();  // Read integer input
 
-        int toss = random.nextInt(2); // 0 or 1
-
-        if (toss == 0) {
-            currentPlayer = "Player 1";
-            player1Symbol = 'X';
-            player2Symbol = 'O';
-        } else {
-            currentPlayer = "Player 2";
-            player1Symbol = 'O';
-            player2Symbol = 'X';
-        }
-
-        // Display results
-        System.out.println("Toss Result: " + toss);
-        System.out.println(currentPlayer + " will start first!");
-        System.out.println("Player 1 Symbol: " + player1Symbol);
-        System.out.println("Player 2 Symbol: " + player2Symbol);
+        return slot; // Return slot value to game logic
     }
 
     public static void main(String[] args) {
-        System.out.println("Starting Tic-Tac-Toe Game...\n");
+        int userSlot = getUserSlot();  // Call method
 
-        tossAndAssign(); // Perform UC2
+        System.out.println("You selected slot: " + userSlot);
     }
 }
-
